@@ -7,7 +7,7 @@ void deal() {
 	TH1F *hbgo[8];
 	for (int i = 0; i < 8; ++i)
 	{
-		hbgo[i] = new TH1F(TString::Format("h%d", i), TString::Format("h%d", i), 3000, 0, 30000);
+		hbgo[i] = new TH1F(TString::Format("h%d", i), TString::Format("h%d", i), 500, 100, 5100);
 	}
 
 	t->SetBranchAddress("adc", adc);
@@ -30,8 +30,9 @@ void deal() {
 
 	for (int i = 0; i < 8; ++i)
 	{
+		gPad->SetLogy();
 		c->cd(i + 1);
-		hbgo->Draw();
+		hbgo[i]->Draw();
 	}
 
 }
